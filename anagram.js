@@ -1,3 +1,31 @@
+//time complexity: 0(n) - linear
+let isAnagram1 = (s, t) => {
+    let hist = {};
+    for (let i = 0; i < s.length; i++) {
+        let char =  s[i];
+        if (char in hist) {
+            hist[char]++;
+        } else {
+            hist[char] = 1;
+        }
+    }
+    for (let i = 0; i< t.length; i++){
+        let char = t[i];
+        if (char in hist) {
+            hist[char]--;
+        } else {
+            return false;
+        }
+    }
+    for (let key in hist) {
+        if (hist[key]) {
+            return false;
+        }
+    }
+    return true;
+}
+//////////////////////////////////////////
+////////////////////////////////////
 const stringCleaner = str => {
     const strWithoutCharacters = str.replace(/[^A-Z0-9]/gi, "");
     return strWithoutCharacters.toLowerCase();
